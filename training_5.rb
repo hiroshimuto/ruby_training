@@ -59,6 +59,36 @@ puts a.length #⇛3
 a.delete('x')
 puts a #⇛{"y"=>2, "z"=>3}
 
+# シンボル
+## シンボルは、ソース上では文字列のように見え、内部では整数として扱われる、両者を仲立ちするような存在です。(リファレンスより)
+
+### 特徴として、内部で整数として扱われるため処理が文字列よりも高速
+### 同じシンボルであれば、全く同じオブジェクトであると判別するためメモリの使用効率がよくなる
+
+# 確認
+puts :apple.object_id #⇛899868
+puts :apple.object_id #⇛899868
+puts :apple.object_id #⇛899868
+
+puts "apple".object_id #⇛70126019934900
+puts "apple".object_id #⇛70126019934840
+puts "apple".object_id #⇛70126019934780
+
+### シンボルはいイミュータブルであるため、破壊的な変更はできない、つまり何か勝手に変更されるリスクがない。
+a = "apple"
+puts a.upcase! #⇛APPLE 文字列だと変更される
+a = :apple
+#puts a.upcase! #⇛undefined method `upcase!' シンボルだとエラーになる
+
+## ハッシュのキーにシンボルを使う
+### その際は シンボル:値 という記法になる事に注意！
+a = {japan:'yen', us:'dollar'} #⇛{:japan=>:yen, :us=>:dollar}
+### キーも値もシンボルである場合は以下のようになる
+a = {japan: :yen, us: :dollar} #⇛{:japan=>:yen, :us=>:dollar}
+
+
+
+
 
 
 
