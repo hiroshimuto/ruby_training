@@ -56,3 +56,23 @@ puts limit #⇛20
 
 ### これは論理演算子の||が指揮全体の真偽値が確定した時点で式の評価を終了し、その時の値を戻り値として返す仕組みが使われている
 ### limit = limit || 10 というふうに展開できる
+
+## !!を使った真偽値の型変換
+# ユーザーが存在するかどうかの独自メソッドを定義したい場合
+def user_exist?
+  user = find_user
+  if user
+    true
+  else
+    false
+  end
+end
+
+### 上記のコードは以下にまとめられる
+
+def user_exist?
+  !!find_user
+end
+
+### !!はtrueもしくはfalseに変換するものである
+
