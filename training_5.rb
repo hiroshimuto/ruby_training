@@ -86,6 +86,20 @@ a = {japan:'yen', us:'dollar'} #⇛{:japan=>:yen, :us=>:dollar}
 ### キーも値もシンボルである場合は以下のようになる
 a = {japan: :yen, us: :dollar} #⇛{:japan=>:yen, :us=>:dollar}
 
+# %記法でシンボルやシンボルの配列を作成する
+a = :apple
+puts a
+## 上記は以下のように書き換えられる
+## !は区切り文字につかう
+puts %s!apple!
+
+## シンボルの配列を作成するときは %i を使うことが可能、この時空白文字が要素の区切りになる
+puts %i(apple orange grape) #⇛[:apple, :orange, :grape]
+
+### deviseなどで独自のカラムを追加する時などに使える。
+## devise_parameter_sanitizer.permit(:sign_up, keys: [:hoge, :hoge])は以下のようになる
+## devise_parameter_sanitizer.permit(:sign_up, keys: %i(hoge hoge))
+
 
 
 
